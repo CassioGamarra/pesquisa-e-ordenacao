@@ -78,7 +78,7 @@ int main(){
 	}
 	cout << "Total de valores no arquivo: " << contador << endl;
 	inFile.close();
-/*	//Abrindo o arquivo novamente para armazenamento no vetor
+	//Abrindo o arquivo novamente para armazenamento no vetor
 	inFile.open(nomeEntrada, ios::in);
 	//Armazena os arquivos em um vetor;
 	long long int vetor[contador]; //Vetor do tamanho do número de elementos no arquivo
@@ -90,6 +90,6 @@ int main(){
 	cout << "Valores no vetor: " << endl;
 	for(i = 0; i < contador; i++){
 		cout << i+1 << "° valor: "<< vetor[i] << endl;
-	}*/
+	}
 	return 0; 
 }
