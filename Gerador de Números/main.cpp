@@ -2,7 +2,6 @@
 #include <locale>
 #include <random>
 #include <fstream>
-
 using namespace std;
 
 /* GERADOR DE NÚMEROS RANDÔMICOS
@@ -14,6 +13,33 @@ using namespace std;
 * Retornar os valores do arquivo para um vetor
 * Temporizar o processamento
 */
+void selecao (int *v, int n){
+	int i, j, posMenor, aux;
+	int comp = 0, troca = 0;
+
+	for(i = 0; i < n-1; i++){
+		posMenor = i;
+		for(j = i + 1; j < n; j++){
+			comp++;
+			if(v[j] < v[posMenor]){
+				posMenor = j;
+			}
+		}
+		if(posMenor != i){
+			aux = v[i];
+			v[i] = v[posMenor];
+			v[posMenor] = aux;
+			troca++;
+		}
+	}
+	
+	cout << "Vetor ordenado: " << endl;
+	for(i = 0; i < n; i++){
+		cout << v[i] << "\t";
+	}
+	cout << endl <<"Nº de comparações: " << comp << endl;
+	cout << "Nº de trocas: " << troca;
+}
 
 int main(){
 	setlocale(LC_ALL, "Portuguese");
@@ -42,7 +68,7 @@ int main(){
 	
 	//Gerando valores randômicos com a biblioteca nativa do C++
 	mt19937 mt(12); //Seed
-	uniform_int_distribution <int> linear_i(0,3000); //Valores inteiros de 0 até 3000
+	uniform_int_distribution <int> linear_i(0,50); //Valores inteiros de 0 até 3000
 	
 	//Armazenando os valores no arquivo
 	int valor;
@@ -81,15 +107,20 @@ int main(){
 	//Abrindo o arquivo novamente para armazenamento no vetor
 	inFile.open(nomeEntrada, ios::in);
 	//Armazena os arquivos em um vetor;
-	long long int vetor[contador]; //Vetor do tamanho do número de elementos no arquivo
+	int vetor[contador]; //Vetor do tamanho do número de elementos no arquivo
 	int i = 0;
+	
 	while(i < contador){
 		inFile >> vetor [i];
 		i++;
 	}
+	
 	cout << "Valores no vetor: " << endl;
 	for(i = 0; i < contador; i++){
 		cout << i+1 << "° valor: "<< vetor[i] << endl;
 	}
+ 	
+	//Ordenação por selection sort
+	selecao(vetor, contador);
 	return 0; 
 }
