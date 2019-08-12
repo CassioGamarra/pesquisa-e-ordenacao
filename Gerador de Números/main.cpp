@@ -2,6 +2,7 @@
 #include <locale>
 #include <random>
 #include <fstream>
+#include <time.h>
 using namespace std;
 
 /* GERADOR DE NÚMEROS RANDÔMICOS
@@ -13,10 +14,13 @@ using namespace std;
 * Retornar os valores do arquivo para um vetor
 * Temporizar o processamento
 */
-void selecao (int *v, int n){
+void selecao (int *v, long long int n){
 	int i, j, posMenor, aux;
 	int comp = 0, troca = 0;
-
+	clock_t tempoInicio, tempoFim;
+	
+	//Temporizar inicio
+	tempoInicio = clock();
 	for(i = 0; i < n-1; i++){
 		posMenor = i;
 		for(j = i + 1; j < n; j++){
@@ -32,15 +36,58 @@ void selecao (int *v, int n){
 			troca++;
 		}
 	}
-	
-	cout << "Vetor ordenado: " << endl;
+	//Temporizar fim
+	tempoFim = clock();
+	float tempo = (float)(tempoFim - tempoInicio)/CLOCKS_PER_SEC;
+/*	cout << "Vetor ordenado: " << endl;
 	for(i = 0; i < n; i++){
 		cout << v[i] << "\t";
-	}
+	}*/
 	cout << endl <<"Nº de comparações: " << comp << endl;
-	cout << "Nº de trocas: " << troca;
+	cout << "Nº de trocas: " << troca << endl;
+	
+	cout << "Tempo: " << tempo;
 }
 
+//Lista
+typedef struct no {
+	int dado;
+	struct no *ant, *prox;
+} CelulaD;
+//Lista desordenada
+CelulaD *inserirDesordenado(int valor, CelulaD *l){
+	CelulaD *novo;
+	CelulaD *p;
+	
+	novo = (CelulaD *)malloc(sizeof(CelulaD));
+	novo->dado = valor;
+	novo->ant = NULL;
+	novo->prox = NULL;
+	
+	if(!l) return novo;
+	
+	for(p = l; p->prox; p = p->prox);
+	
+	p->prox = novo;
+	novo->ant = p;
+	
+	return l;
+}
+//Exibir lista
+void exibirD(CelulaD *l) {
+	if (!l) {
+		cout << "Lista vazia";
+		return;
+	}
+	for (;l->ant; l = l->ant); //ter certeza que o controle da lista l esteja na primeira posicao
+	
+	for (int i = 0;l; l = l->prox, i++) {
+		cout << i+1 << "° valor: "<< l->dado << endl;
+	}
+	
+}
+
+//Main
 int main(){
 	setlocale(LC_ALL, "Portuguese");
 	
@@ -108,19 +155,24 @@ int main(){
 	inFile.open(nomeEntrada, ios::in);
 	//Armazena os arquivos em um vetor;
 	int vetor[contador]; //Vetor do tamanho do número de elementos no arquivo
-	int i = 0;
+	long long int i = 0;
+	//Armazenando no vetor
+	//Armazenando na lista
+	CelulaD *lista = NULL;
 	
-	while(i < contador){
-		inFile >> vetor [i];
-		i++;
+	while(inFile >> valor){
+		vetor[i] = valor;
+		//lista = inserirDesordenado(valor, lista);
+		i++;	
 	}
-	
 	cout << "Valores no vetor: " << endl;
-	for(i = 0; i < contador; i++){
+/*	for(i = 0; i < contador; i++){
 		cout << i+1 << "° valor: "<< vetor[i] << endl;
-	}
- 	
+	}*/
+ //	cout << "Valores na lista: " << endl;
+ //	exibirD(lista);
 	//Ordenação por selection sort
+	cout << endl;
 	selecao(vetor, contador);
 	return 0; 
 }
