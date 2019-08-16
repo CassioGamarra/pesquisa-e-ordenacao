@@ -24,15 +24,39 @@ public class Ordenacao {
         }
     }
     
-    public static void selecao(ArrayList vetor){
+    public static void selecao(ArrayList<Integer> vetor){
+         int i, j, posMenor, aux;
          
+         for(i = 0; i < vetor.size() - 1; i++){
+             posMenor = i;
+             
+             for(j = i+1; j < vetor.size(); j++){
+                 if(vetor.get(j) < vetor.get(posMenor)){
+                     posMenor = j;
+                 }
+             }
+             if(i != posMenor){
+                 aux = vetor.get(i);
+                 vetor.set(i, vetor.get(posMenor));
+                 vetor.set(posMenor, aux);
+                 
+             }
+         }
     }
     
-    public static void insercao(ArrayList vetor){
-     
+    public static void insercao(ArrayList<Integer> vetor){
+        int i, j, aux;
+        
+        for (i = 1; i < vetor.size(); i++){
+            aux = vetor.get(i);
+            for(j = i-1; j >= 0 && aux < vetor.get(j); j--){
+                vetor.set(j+1, vetor.get(j));
+            }
+            vetor.set(j+1, aux);
+        }
     }
     
-    public static void bolha(ArrayList vetor){
+    public static void bolha(ArrayList<Integer> vetor){
      
     }
 }
