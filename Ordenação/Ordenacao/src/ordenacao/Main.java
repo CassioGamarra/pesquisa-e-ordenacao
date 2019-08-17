@@ -13,8 +13,34 @@ import java.util.ArrayList;
  */
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Integer> vetor = new ArrayList();
-        Ordenacao.popula(50, vetor);
-        Ordenacao.exibir(vetor);
+        ArrayList<Integer> vetorA = new ArrayList();
+        ArrayList<Integer> vetorB = new ArrayList();
+        ArrayList<Integer> vetorC = new ArrayList();
+        Ordenacao.popula(10, vetorA);
+        Ordenacao.popula(10, vetorB);
+        Ordenacao.popula(10, vetorC);
+        long tempoInicial, tempoFinal;
+
+       
+        System.out.println("Vetor com Selection Sort: ");
+        tempoInicial = System.currentTimeMillis();
+        Ordenacao.selecao(vetorA);
+        tempoFinal = System.currentTimeMillis();
+        Ordenacao.exibir(vetorA);
+        System.out.println("Tempo = "+(tempoFinal-tempoInicial)+" ms");
+        
+        System.out.println("Vetor com Insertion Sort: ");
+        tempoInicial = System.currentTimeMillis();
+        Ordenacao.insercao(vetorB);
+        tempoFinal = System.currentTimeMillis();
+        Ordenacao.exibir(vetorB);
+        System.out.println("Tempo = "+(tempoFinal-tempoInicial)+ " ms");
+        
+        System.out.println("Vetor com Bubble Sort: ");
+        tempoInicial = System.currentTimeMillis();
+        Ordenacao.bolha(vetorC);
+        tempoFinal = System.currentTimeMillis();
+        Ordenacao.exibir(vetorC);
+        System.out.println("Tempo = "+(tempoFinal-tempoInicial)+ " ms");
     }
 }
