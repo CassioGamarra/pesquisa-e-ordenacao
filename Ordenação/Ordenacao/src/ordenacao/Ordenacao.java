@@ -13,7 +13,7 @@ public class Ordenacao {
     public static void popula(int quantidade, ArrayList vetor){
         Random gerador = new Random();
         for(int i = 0; i < quantidade; i++){
-            vetor.add(gerador.nextInt(10));
+            vetor.add(gerador.nextInt(1000));
         }
     }
     
