@@ -18,9 +18,13 @@ public class Main {
         ArrayList<Integer> vetorC = new ArrayList();
         Ordenacao.popula(10, vetorA);
         Ordenacao.popula(10, vetorB);
-        Ordenacao.popula(10, vetorC);
+        //Ordenacao.popula(10, vetorC);
         long tempoInicial, tempoFinal;
-
+        vetorC.add(5);
+        vetorC.add(4);
+        vetorC.add(3);
+        vetorC.add(2);
+        vetorC.add(1);
        
         System.out.println("Vetor com Selection Sort: ");
         tempoInicial = System.currentTimeMillis();

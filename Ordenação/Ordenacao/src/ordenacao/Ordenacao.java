@@ -71,7 +71,7 @@ public class Ordenacao {
         int i, aux;
         int numTrocas = 0, numComparacoes = 0;
         boolean troca;
-   /*    do{
+       do{
             troca = false;
             for(i = 0; i < vetor.size() - 1; i++){
                 numComparacoes++;
@@ -83,19 +83,7 @@ public class Ordenacao {
                     numTrocas++;
                 }
             }
-        } while(troca);*/
-        
-        for(int j = 0; j < vetor.size(); j++){
-            for(i  = 0; i < (vetor.size()-1);i++){
-                numComparacoes++;
-                if(vetor.get(i) > vetor.get(j)){
-                    aux = vetor.get(i);
-                    vetor.set(i, vetor.get(j));
-                    vetor.set(j, aux);
-                    numTrocas++;
-                }
-            }
-        }
+        } while(troca);
         System.out.println("Número de comparações: "+numComparacoes+" Número de trocas: "+numTrocas);
     }
 }
