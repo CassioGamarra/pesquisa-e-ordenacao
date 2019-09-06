@@ -49,7 +49,7 @@ public class Ordenacao {
     
     public static void insercao(ArrayList<Integer> vetor){
         int i, j, aux;
-        int numTrocas = 0, numComparacoes = 1;
+        int numTrocas = 0, numComparacoes = 0;
         
         for (i = 1; i < vetor.size(); i++){
             aux = vetor.get(i);
@@ -71,19 +71,84 @@ public class Ordenacao {
         int i, aux;
         int numTrocas = 0, numComparacoes = 0;
         boolean troca;
-       do{
-            troca = false;
-            for(i = 0; i < vetor.size() - 1; i++){
+        do{
+             troca = false;
+             for(i = 0; i < vetor.size() - 1; i++){
+                 numComparacoes++;
+                 if(vetor.get(i) > vetor.get(i+1)){
+                     aux = vetor.get(i);
+                     vetor.set(i, vetor.get(i+1));
+                     vetor.set(i+1, aux);
+                     troca = true;
+                     numTrocas++;
+                 }
+             }
+         } while(troca);
+        System.out.println("Número de comparações: "+numComparacoes+" Número de trocas: "+numTrocas);
+    }
+    
+    public static void shakeSort(ArrayList<Integer> vetor){
+        int i, aux, ini, fim;
+        int numTrocas = 0, numComparacoes = 0;
+        ini = 0;
+        fim = vetor.size() - 1;
+        boolean houveTroca;
+        
+        do{
+            houveTroca = false;
+            for(i = ini; i < fim; i++){
                 numComparacoes++;
                 if(vetor.get(i) > vetor.get(i+1)){
                     aux = vetor.get(i);
                     vetor.set(i, vetor.get(i+1));
                     vetor.set(i+1, aux);
-                    troca = true;
+                    houveTroca = true;
                     numTrocas++;
                 }
             }
-        } while(troca);
+            fim--;
+            if(!houveTroca) break;
+            
+            houveTroca = false;
+            
+            for(i  = fim; i > ini; i--){
+                numComparacoes++;
+                if(vetor.get(i) < vetor.get(i-1)){
+                    aux = vetor.get(i);
+                    vetor.set(i, vetor.get(i-1));
+                    vetor.set(i-1, aux);
+                    houveTroca = true;
+                    numTrocas++;
+                }
+            }
+            ini++;
+        }while(houveTroca  && fim > ini);
+        System.out.println("Número de comparações: "+numComparacoes+" Número de trocas: "+numTrocas);
+    }
+    
+    public static void pente(ArrayList<Integer> vetor){
+        int i, distancia, aux;
+        int numTrocas = 0, numComparacoes = 0;
+        boolean houveTroca;
+        
+        distancia = vetor.size();
+        
+        do{
+            distancia = (int) (distancia / 1.3);
+            if(distancia < 1) distancia = 1; //Vira bolha
+            houveTroca = false;
+            for(i = 0; i + distancia < vetor.size(); i++){
+                numComparacoes++;
+                if(vetor.get(i) > vetor.get(i+distancia)){
+                    aux = vetor.get(i);
+                    vetor.set(i, vetor.get(i + distancia));
+                    vetor.set(i+distancia, aux);
+                    houveTroca = true;
+                    numTrocas++;
+                }
+            }
+        }while(distancia > 1 || houveTroca);
+        
         System.out.println("Número de comparações: "+numComparacoes+" Número de trocas: "+numTrocas);
     }
 }
