@@ -13,12 +13,13 @@ public class Ordenacao {
     public Ordenacao(){}
     
     //Arrays com os comparativos
-    public static ArrayList<String> trocas = new ArrayList<>();
-    public static ArrayList<String> comparacoes = new ArrayList<>();  
-    public ArrayList<String> compararMetodos(ViewPrincipal view, int id){
+    public final static ArrayList<String> trocas = new ArrayList<>();
+    public final static ArrayList<String> comparacoes = new ArrayList<>();  
+    public final static ArrayList<String> tempos = new ArrayList<>();
+    
+    public void compararMetodos(ViewPrincipal view){
         int quantidade = Integer.parseInt(view.getFieldQtd().getText());
         ArrayList<Integer> vetor = new ArrayList<>();
-        ArrayList<String> tempos = new ArrayList<>();
         
         tempos.clear();
         trocas.clear();
@@ -148,19 +149,6 @@ public class Ordenacao {
         System.out.println(comparacoes);
         System.out.println(trocas);
         
-        if(id == 0){
-            return tempos;
-        }
-        
-        if(id == 1){
-            return comparacoes;
-        }
-        if(id == 2){
-            return trocas;
-        }
-        else{
-            return tempos;
-        }
     }
     
     //Método para popular o ArrayList

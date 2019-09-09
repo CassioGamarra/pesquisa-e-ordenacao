@@ -10,6 +10,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import ordenacao.GeradorDeGrafico;
 import ordenacao.Ordenacao;
+import static ordenacao.Ordenacao.*;
 
 /**
  *
@@ -29,6 +30,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
     ArrayList<String> dadosTrocas = new ArrayList<>();
     ArrayList<String> dadosComparacoes = new ArrayList<>();
     
+    //Gráfico
+    GeradorDeGrafico grafico = new GeradorDeGrafico();
     //Getters
     
     public JCheckBox getCheckBubble() {
@@ -99,10 +102,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
 
         ViewGrafico.setTitle("GRÁFICOS");
-        ViewGrafico.setMaximumSize(new java.awt.Dimension(640, 640));
         ViewGrafico.setMinimumSize(new java.awt.Dimension(640, 640));
         ViewGrafico.setName("ViewGrafico"); // NOI18N
-        ViewGrafico.setPreferredSize(new java.awt.Dimension(640, 640));
         ViewGrafico.setResizable(false);
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SELECIONE O TIPO DE GRÁFICO:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
@@ -414,11 +415,13 @@ public class ViewPrincipal extends javax.swing.JFrame {
     private void btnCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompararActionPerformed
         // TODO add your handling code here:
         Ordenacao ordenacao = new Ordenacao();
-        GeradorDeGrafico grafico = new GeradorDeGrafico();
         panelGrafico.removeAll();
-        dadosTempo = ordenacao.compararMetodos(this, 0);
-        dadosComparacoes = ordenacao.compararMetodos(this, 1);
-        dadosTrocas = ordenacao.compararMetodos(this, 2);
+        
+        ordenacao.compararMetodos(this);
+        dadosTempo = tempos;
+        dadosTrocas = trocas;
+        dadosComparacoes = comparacoes;
+        
         panelGrafico.add(grafico.gerarGrafico(dadosTempo, 0));
         panelGrafico.revalidate();
         panelGrafico.repaint();
@@ -428,8 +431,6 @@ public class ViewPrincipal extends javax.swing.JFrame {
 
     private void btnGraficoTempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficoTempoActionPerformed
         // TODO add your handling code here:
-        Ordenacao ordenacao = new Ordenacao();
-        GeradorDeGrafico grafico = new GeradorDeGrafico();
         panelGrafico.removeAll();
         panelGrafico.add(grafico.gerarGrafico(dadosTempo, 0));
         panelGrafico.revalidate();
@@ -438,8 +439,6 @@ public class ViewPrincipal extends javax.swing.JFrame {
 
     private void btnGraficoCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficoCompActionPerformed
         // TODO add your handling code here:
-        Ordenacao ordenacao = new Ordenacao();
-        GeradorDeGrafico grafico = new GeradorDeGrafico();
         panelGrafico.removeAll();
         panelGrafico.add(grafico.gerarGrafico(dadosComparacoes, 1));
         panelGrafico.revalidate();
@@ -448,8 +447,6 @@ public class ViewPrincipal extends javax.swing.JFrame {
 
     private void btnGraficoTrocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficoTrocaActionPerformed
         // TODO add your handling code here:
-        Ordenacao ordenacao = new Ordenacao();
-        GeradorDeGrafico grafico = new GeradorDeGrafico();
         panelGrafico.removeAll();
         panelGrafico.add(grafico.gerarGrafico(dadosTrocas, 2));
         panelGrafico.revalidate();
