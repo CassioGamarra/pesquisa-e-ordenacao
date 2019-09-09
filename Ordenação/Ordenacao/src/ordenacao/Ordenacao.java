@@ -1,19 +1,180 @@
-
 package ordenacao;
 
 import java.util.ArrayList;
 import java.util.Random;
+import view.ViewPrincipal;
 
 /**
- *
+ * ID's: Tempo = 0 // Comparações = 1 // Trocas = 2
  * @author cassio
  */
 public class Ordenacao {
     
-    public static void popula(int quantidade, ArrayList vetor){
+    public Ordenacao(){}
+    
+    //Arrays com os comparativos
+    public static ArrayList<String> trocas = new ArrayList<>();
+    public static ArrayList<String> comparacoes = new ArrayList<>();  
+    public ArrayList<String> compararMetodos(ViewPrincipal view, int id){
+        int quantidade = Integer.parseInt(view.getFieldQtd().getText());
+        ArrayList<Integer> vetor = new ArrayList<>();
+        ArrayList<String> tempos = new ArrayList<>();
+        
+        tempos.clear();
+        trocas.clear();
+        comparacoes.clear();
+        
+        popular(quantidade, vetor);
+        //Valores de tempo inicial e final
+        long tempoInicial, tempoFinal;
+        //Valores de tempo dos métodos
+        long tempoSelection, tempoInsertion, tempoBubble, tempoShake, tempoComb, tempoShell;
+        
+        if(view.getCheckSelection().isSelected()){
+            ArrayList<Integer> selection = new ArrayList<>();
+            clonar(vetor, selection);
+            
+            //Exibindo resultado
+            System.out.println("Vetor com Selection Sort: ");
+            tempoInicial = System.currentTimeMillis();
+            selecao(selection);
+            tempoFinal = System.currentTimeMillis();
+            tempoSelection = tempoFinal-tempoInicial;
+            
+            tempos.add(String.valueOf(tempoSelection));
+            System.out.println("Tempo = "+tempoSelection+" ms");
+        }
+        else{
+            tempos.add("X");
+            trocas.add("X");
+            comparacoes.add("X");
+        }
+        if(view.getCheckInsertion().isSelected()){
+            ArrayList<Integer> insertion = new ArrayList<>();
+            clonar(vetor, insertion);
+            
+            //Exibindo resultado
+            System.out.println("Vetor com Insertion Sort: ");
+            tempoInicial = System.currentTimeMillis();
+            Ordenacao.insercao(insertion);
+            tempoFinal = System.currentTimeMillis();
+            tempoInsertion = tempoFinal-tempoInicial;
+            
+            tempos.add(String.valueOf(tempoInsertion));
+            System.out.println("Tempo = "+tempoInsertion+ " ms");
+        }
+        else{
+            tempos.add("X");
+            trocas.add("X");
+            comparacoes.add("X");
+        }
+        if(view.getCheckBubble().isSelected()){
+            ArrayList<Integer> bubble = new ArrayList<>();
+            clonar(vetor, bubble);
+            
+            //Exibindo resultado
+            System.out.println("Vetor com Bubble Sort: ");
+            tempoInicial = System.currentTimeMillis();
+            Ordenacao.bolha(bubble);
+            tempoFinal = System.currentTimeMillis();
+            tempoBubble = tempoFinal-tempoInicial;
+            
+            tempos.add(String.valueOf(tempoBubble));
+            System.out.println("Tempo = "+tempoBubble+ " ms");
+        }
+        else{
+            tempos.add("X");
+            trocas.add("X");
+            comparacoes.add("X");
+        }
+        if(view.getCheckShake().isSelected()){
+            ArrayList<Integer> shake = new ArrayList<>();
+            clonar(vetor, shake);
+            
+            //Exibindo resultado
+            System.out.println("Vetor com Shake Sort: ");
+            tempoInicial = System.currentTimeMillis();
+            Ordenacao.agitacao(shake);
+            tempoFinal = System.currentTimeMillis();
+            tempoShake = tempoFinal-tempoInicial;
+            
+            tempos.add(String.valueOf(tempoShake)); 
+            System.out.println("Tempo = "+tempoShake+ " ms");
+        } 
+        else{
+            tempos.add("X");
+            trocas.add("X");
+            comparacoes.add("X");
+        }
+        if(view.getCheckComb().isSelected()){
+            ArrayList<Integer> comb = new ArrayList<>();
+            clonar(vetor, comb);
+            
+            //Exibindo resultado
+            System.out.println("Vetor com Comb Sort: ");
+            tempoInicial = System.currentTimeMillis();
+            Ordenacao.pente(comb);
+            tempoFinal = System.currentTimeMillis();
+            tempoComb = tempoFinal-tempoInicial;
+            
+            tempos.add(String.valueOf(tempoComb));
+            System.out.println("Tempo = "+tempoComb+ " ms");
+        }
+        else{
+            tempos.add("X");
+            trocas.add("X");
+            comparacoes.add("X");
+        }
+        if(view.getCheckShell().isSelected()){
+            ArrayList<Integer> shell = new ArrayList<>();
+            clonar(vetor, shell);
+            
+            //Exibindo resultado
+            System.out.println("Vetor com Shell Sort: ");
+            tempoInicial = System.currentTimeMillis();
+            Ordenacao.shellSort(shell);
+            tempoFinal = System.currentTimeMillis();
+            tempoShell = tempoFinal-tempoInicial;
+            
+            tempos.add(String.valueOf(tempoShell));
+            System.out.println("Tempo = "+tempoShell+ " ms");
+        }
+        else{
+            tempos.add("X");
+            trocas.add("X");
+            comparacoes.add("X");
+        }
+        System.out.println(tempos);
+        System.out.println(comparacoes);
+        System.out.println(trocas);
+        
+        if(id == 0){
+            return tempos;
+        }
+        
+        if(id == 1){
+            return comparacoes;
+        }
+        if(id == 2){
+            return trocas;
+        }
+        else{
+            return tempos;
+        }
+    }
+    
+    //Método para popular o ArrayList
+    public static void popular(int quantidade, ArrayList vetor){
         Random gerador = new Random();
         for(int i = 0; i < quantidade; i++){
             vetor.add(gerador.nextInt(1000));
+        }
+    }
+    
+    //Método para clonar o ArrayList
+    public static void clonar(ArrayList vetorOrigem, ArrayList vetorDestino){
+        for(int i = 0; i < vetorOrigem.size();i++){
+            vetorDestino.add(vetorOrigem.get(i));
         }
     }
     
@@ -24,6 +185,7 @@ public class Ordenacao {
         }
     }
     
+    //Métodos de ordenação
     public static void selecao(ArrayList<Integer> vetor){
          int i, j, posMenor, aux;
          int numTrocas = 0, numComparacoes = 0;
@@ -45,6 +207,8 @@ public class Ordenacao {
              }
          }
          System.out.println("Número de comparações: "+numComparacoes+" Número de trocas: "+numTrocas);
+         trocas.add(String.valueOf(numTrocas));
+         comparacoes.add(String.valueOf(numComparacoes));
     }
     
     public static void insercao(ArrayList<Integer> vetor){
@@ -65,6 +229,8 @@ public class Ordenacao {
         }
         
         System.out.println("Número de comparações: "+numComparacoes+" Número de trocas: "+numTrocas);
+        trocas.add(String.valueOf(numTrocas));
+        comparacoes.add(String.valueOf(numComparacoes));
     }
     
     public static void bolha(ArrayList<Integer> vetor){
@@ -85,9 +251,11 @@ public class Ordenacao {
              }
          } while(troca);
         System.out.println("Número de comparações: "+numComparacoes+" Número de trocas: "+numTrocas);
+        trocas.add(String.valueOf(numTrocas));
+        comparacoes.add(String.valueOf(numComparacoes));
     }
     
-    public static void shakeSort(ArrayList<Integer> vetor){
+    public static void agitacao(ArrayList<Integer> vetor){
         int i, aux, ini, fim;
         int numTrocas = 0, numComparacoes = 0;
         ini = 0;
@@ -124,6 +292,8 @@ public class Ordenacao {
             ini++;
         }while(houveTroca  && fim > ini);
         System.out.println("Número de comparações: "+numComparacoes+" Número de trocas: "+numTrocas);
+        trocas.add(String.valueOf(numTrocas));
+        comparacoes.add(String.valueOf(numComparacoes));
     }
     
     public static void pente(ArrayList<Integer> vetor){
@@ -150,5 +320,32 @@ public class Ordenacao {
         }while(distancia > 1 || houveTroca);
         
         System.out.println("Número de comparações: "+numComparacoes+" Número de trocas: "+numTrocas);
+        trocas.add(String.valueOf(numTrocas));
+        comparacoes.add(String.valueOf(numComparacoes));
+    }
+    
+    public static void shellSort(ArrayList<Integer> vetor){
+        int i, j, aux, distancia = 1;
+        int numTrocas = 0, numComparacoes = 0;
+        
+        do{
+            distancia = 3 * distancia + 1;
+        }while(distancia < vetor.size());
+        
+        do{
+            distancia = (int) distancia/ 3;
+            for(i =  distancia; i < vetor.size(); i++){
+                aux = vetor.get(i);
+                numComparacoes++;
+                for(j =  i - distancia; j >= 0 && aux < vetor.get(j); j =  j - distancia){
+                    vetor.set(j+distancia, vetor.get(j));
+                }
+                vetor.set(j+distancia, aux);
+                numTrocas++;
+            }
+        }while(distancia > 1);
+        System.out.println("Número de comparações: "+numComparacoes+" Número de trocas: "+numTrocas);
+        trocas.add(String.valueOf(numTrocas));
+        comparacoes.add(String.valueOf(numComparacoes));
     }
 }
