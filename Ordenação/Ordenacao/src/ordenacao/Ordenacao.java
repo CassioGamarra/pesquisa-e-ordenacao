@@ -176,7 +176,7 @@ public class Ordenacao {
     //Métodos de ordenação
     public static void selecao(ArrayList<Integer> vetor){
          int i, j, posMenor, aux;
-         int numTrocas = 0, numComparacoes = 0;
+         long numTrocas = 0, numComparacoes = 0;
          
          for(i = 0; i < vetor.size() - 1; i++){
              posMenor = i;
@@ -201,7 +201,7 @@ public class Ordenacao {
     
     public static void insercao(ArrayList<Integer> vetor){
         int i, j, aux;
-        int numTrocas = 0, numComparacoes = 0;
+        long numTrocas = 0, numComparacoes = 0;
         
         for (i = 1; i < vetor.size(); i++){
             aux = vetor.get(i);
@@ -223,7 +223,7 @@ public class Ordenacao {
     
     public static void bolha(ArrayList<Integer> vetor){
         int i, aux;
-        int numTrocas = 0, numComparacoes = 0;
+        long numTrocas = 0, numComparacoes = 0;
         boolean troca;
         do{
              troca = false;
@@ -245,7 +245,7 @@ public class Ordenacao {
     
     public static void agitacao(ArrayList<Integer> vetor){
         int i, aux, ini, fim;
-        int numTrocas = 0, numComparacoes = 0;
+        long numTrocas = 0, numComparacoes = 0;
         ini = 0;
         fim = vetor.size() - 1;
         boolean houveTroca;
@@ -286,7 +286,7 @@ public class Ordenacao {
     
     public static void pente(ArrayList<Integer> vetor){
         int i, distancia, aux;
-        int numTrocas = 0, numComparacoes = 0;
+        long numTrocas = 0, numComparacoes = 0;
         boolean houveTroca;
         
         distancia = vetor.size();
@@ -314,7 +314,7 @@ public class Ordenacao {
     
     public static void shellSort(ArrayList<Integer> vetor){
         int i, j, aux, distancia = 1;
-        int numTrocas = 0, numComparacoes = 0;
+        long numTrocas = 0, numComparacoes = 0;
         
         do{
             distancia = 3 * distancia + 1;
