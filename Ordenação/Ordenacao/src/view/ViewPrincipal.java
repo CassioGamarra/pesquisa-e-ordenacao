@@ -92,14 +92,17 @@ public class ViewPrincipal extends javax.swing.JFrame {
         checkShell = new javax.swing.JCheckBox();
         panelSobreMetodos = new javax.swing.JPanel();
         guiasMetodos = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        panelSelection = new javax.swing.JPanel();
         jTextArea1 = new javax.swing.JTextArea();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextArea2 = new javax.swing.JTextArea();
+        jTextArea3 = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        panelInsertion = new javax.swing.JPanel();
+        panelBubble = new javax.swing.JPanel();
+        panelShake = new javax.swing.JPanel();
+        panelComb = new javax.swing.JPanel();
+        panelShell = new javax.swing.JPanel();
 
         ViewGrafico.setTitle("GRÁFICOS");
         ViewGrafico.setMinimumSize(new java.awt.Dimension(640, 640));
@@ -294,90 +297,139 @@ public class ViewPrincipal extends javax.swing.JFrame {
 
         panelGuias.addTab("INÍCIO", panelPrincipal);
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("TEXTO SOBRE O SELECTION\n");
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextArea1.setText("A ordenação por seleção (do inglês, selection sort) é um algoritmo de ordenação \nbaseado em se passar sempre o menor valor do vetor para a primeira posição\n(ou o maior dependendo da ordem requerida), depois o de segundo menor valor \npara a segunda posição, e assim é feito sucessivamente com os n − 1 elementos \nrestantes, até os últimos dois elementos.");
+        jTextArea1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SOBRE:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 252, Short.MAX_VALUE))
-        );
+        jTextField2.setEditable(false);
+        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextField2.setText("O(n²)");
+        jTextField2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "COMPLEXIDADE:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
-        guiasMetodos.addTab("SELECTION", jPanel1);
+        jTextArea2.setEditable(false);
+        jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextArea2.setRows(5);
+        jTextArea2.setText("• Ele é um algoritmo simples de ser implementado em comparação aos demais.\n• Não necessita de um vetor auxiliar (in-place).\n• Por não usar um vetor auxiliar para realizar a ordenação, ele ocupa menos\nmemória.\n• Ele é uns dos mais velozes na ordenação de vetores de tamanhos pequenos.");
+        jTextArea2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "VANTAGENS:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
-        );
+        jTextArea3.setEditable(false);
+        jTextArea3.setColumns(20);
+        jTextArea3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextArea3.setRows(5);
+        jTextArea3.setText("• Ele é um dos mais lentos para vetores de tamanhos grandes.\n• Ele não é estável.\n• Ele faz sempre ( n² − n ) / 2 comparações, independente do vetor \nestá ordenado ou não.");
+        jTextArea3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DESVANTAGENS:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        guiasMetodos.addTab("INSERTION", jPanel2);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelSelectionLayout = new javax.swing.GroupLayout(panelSelection);
+        panelSelection.setLayout(panelSelectionLayout);
+        panelSelectionLayout.setHorizontalGroup(
+            panelSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSelectionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSelectionLayout.createSequentialGroup()
+                        .addGap(0, 2, Short.MAX_VALUE)
+                        .addComponent(jTextArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelSelectionLayout.createSequentialGroup()
+                        .addGroup(panelSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextArea3, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
-        );
-
-        guiasMetodos.addTab("BUBBLE", jPanel3);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
-        );
-
-        guiasMetodos.addTab("SHAKE", jPanel4);
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
+        panelSelectionLayout.setVerticalGroup(
+            panelSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSelectionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextArea2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextArea3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        guiasMetodos.addTab("COMB", jPanel5);
+        guiasMetodos.addTab("SELECTION", panelSelection);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelInsertionLayout = new javax.swing.GroupLayout(panelInsertion);
+        panelInsertion.setLayout(panelInsertionLayout);
+        panelInsertionLayout.setHorizontalGroup(
+            panelInsertionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
+        panelInsertionLayout.setVerticalGroup(
+            panelInsertionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        guiasMetodos.addTab("SHELL", jPanel6);
+        guiasMetodos.addTab("INSERTION", panelInsertion);
+
+        javax.swing.GroupLayout panelBubbleLayout = new javax.swing.GroupLayout(panelBubble);
+        panelBubble.setLayout(panelBubbleLayout);
+        panelBubbleLayout.setHorizontalGroup(
+            panelBubbleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelBubbleLayout.setVerticalGroup(
+            panelBubbleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        guiasMetodos.addTab("BUBBLE", panelBubble);
+
+        javax.swing.GroupLayout panelShakeLayout = new javax.swing.GroupLayout(panelShake);
+        panelShake.setLayout(panelShakeLayout);
+        panelShakeLayout.setHorizontalGroup(
+            panelShakeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelShakeLayout.setVerticalGroup(
+            panelShakeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        guiasMetodos.addTab("SHAKE", panelShake);
+
+        javax.swing.GroupLayout panelCombLayout = new javax.swing.GroupLayout(panelComb);
+        panelComb.setLayout(panelCombLayout);
+        panelCombLayout.setHorizontalGroup(
+            panelCombLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelCombLayout.setVerticalGroup(
+            panelCombLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        guiasMetodos.addTab("COMB", panelComb);
+
+        javax.swing.GroupLayout panelShellLayout = new javax.swing.GroupLayout(panelShell);
+        panelShell.setLayout(panelShellLayout);
+        panelShellLayout.setHorizontalGroup(
+            panelShellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelShellLayout.setVerticalGroup(
+            panelShellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        guiasMetodos.addTab("SHELL", panelShell);
 
         javax.swing.GroupLayout panelSobreMetodosLayout = new javax.swing.GroupLayout(panelSobreMetodos);
         panelSobreMetodos.setLayout(panelSobreMetodosLayout);
@@ -387,9 +439,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         );
         panelSobreMetodosLayout.setVerticalGroup(
             panelSobreMetodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelSobreMetodosLayout.createSequentialGroup()
-                .addComponent(guiasMetodos, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 67, Short.MAX_VALUE))
+            .addComponent(guiasMetodos)
         );
 
         panelGuias.addTab("SOBRE OS MÉTODOS", panelSobreMetodos);
@@ -453,6 +503,10 @@ public class ViewPrincipal extends javax.swing.JFrame {
         panelGrafico.repaint();
     }//GEN-LAST:event_btnGraficoTrocaActionPerformed
 
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -503,19 +557,22 @@ public class ViewPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField fieldQtd;
     private javax.swing.JTabbedPane guiasMetodos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPanel panelBubble;
+    private javax.swing.JPanel panelComb;
     private javax.swing.JPanel panelGrafico;
     private javax.swing.JTabbedPane panelGuias;
+    private javax.swing.JPanel panelInsertion;
     private javax.swing.JPanel panelMetodos;
     private javax.swing.JPanel panelPrincipal;
+    private javax.swing.JPanel panelSelection;
+    private javax.swing.JPanel panelShake;
+    private javax.swing.JPanel panelShell;
     private javax.swing.JPanel panelSobreMetodos;
     // End of variables declaration//GEN-END:variables
 }
