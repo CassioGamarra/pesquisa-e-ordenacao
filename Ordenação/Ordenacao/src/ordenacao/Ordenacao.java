@@ -336,4 +336,8 @@ public class Ordenacao {
         trocas.add(String.valueOf(numTrocas));
         comparacoes.add(String.valueOf(numComparacoes));
     }
+    //Necessário implementar
+    public static void mergeSort(ArrayList<Integer> vetor){
+    
+    }
 }

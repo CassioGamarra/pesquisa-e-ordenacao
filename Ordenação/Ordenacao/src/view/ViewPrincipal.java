@@ -90,6 +90,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         checkShake = new javax.swing.JCheckBox();
         checkComb = new javax.swing.JCheckBox();
         checkShell = new javax.swing.JCheckBox();
+        checkMerge = new javax.swing.JCheckBox();
         panelSobreMetodos = new javax.swing.JPanel();
         guiasMetodos = new javax.swing.JTabbedPane();
         panelSelection = new javax.swing.JPanel();
@@ -103,6 +104,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         panelShake = new javax.swing.JPanel();
         panelComb = new javax.swing.JPanel();
         panelShell = new javax.swing.JPanel();
+        panelMerge = new javax.swing.JPanel();
 
         ViewGrafico.setTitle("GRÁFICOS");
         ViewGrafico.setMinimumSize(new java.awt.Dimension(640, 640));
@@ -240,6 +242,10 @@ public class ViewPrincipal extends javax.swing.JFrame {
         checkShell.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         checkShell.setText("Shell");
 
+        checkMerge.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        checkMerge.setText("Merge");
+        checkMerge.setEnabled(false);
+
         javax.swing.GroupLayout panelMetodosLayout = new javax.swing.GroupLayout(panelMetodos);
         panelMetodos.setLayout(panelMetodosLayout);
         panelMetodosLayout.setHorizontalGroup(
@@ -257,6 +263,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
                 .addComponent(checkComb)
                 .addGap(18, 18, 18)
                 .addComponent(checkShell)
+                .addGap(18, 18, 18)
+                .addComponent(checkMerge)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelMetodosLayout.setVerticalGroup(
@@ -269,8 +277,9 @@ public class ViewPrincipal extends javax.swing.JFrame {
                     .addComponent(checkBubble)
                     .addComponent(checkShake)
                     .addComponent(checkComb)
-                    .addComponent(checkShell))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(checkShell)
+                    .addComponent(checkMerge))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
@@ -292,7 +301,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
                 .addComponent(panelMetodos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnComparar)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
 
         panelGuias.addTab("INÍCIO", panelPrincipal);
@@ -431,6 +440,19 @@ public class ViewPrincipal extends javax.swing.JFrame {
 
         guiasMetodos.addTab("SHELL", panelShell);
 
+        javax.swing.GroupLayout panelMergeLayout = new javax.swing.GroupLayout(panelMerge);
+        panelMerge.setLayout(panelMergeLayout);
+        panelMergeLayout.setHorizontalGroup(
+            panelMergeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelMergeLayout.setVerticalGroup(
+            panelMergeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        guiasMetodos.addTab("MERGE", panelMerge);
+
         javax.swing.GroupLayout panelSobreMetodosLayout = new javax.swing.GroupLayout(panelSobreMetodos);
         panelSobreMetodos.setLayout(panelSobreMetodosLayout);
         panelSobreMetodosLayout.setHorizontalGroup(
@@ -551,6 +573,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkBubble;
     private javax.swing.JCheckBox checkComb;
     private javax.swing.JCheckBox checkInsertion;
+    private javax.swing.JCheckBox checkMerge;
     private javax.swing.JCheckBox checkSelection;
     private javax.swing.JCheckBox checkShake;
     private javax.swing.JCheckBox checkShell;
@@ -568,6 +591,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panelGrafico;
     private javax.swing.JTabbedPane panelGuias;
     private javax.swing.JPanel panelInsertion;
+    private javax.swing.JPanel panelMerge;
     private javax.swing.JPanel panelMetodos;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JPanel panelSelection;

@@ -19,31 +19,31 @@ public class GeradorDeGrafico {
         //Criando o conjunto dos dados
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         
-        int tempoSelection, tempoInsertion, tempoBubble, tempoShake, tempoComb, tempoShell;
+        long tempoSelection, tempoInsertion, tempoBubble, tempoShake, tempoComb, tempoShell;
         
         //Pegando os valores
         if(!dados.get(0).equals("X")){
-            tempoSelection = Integer.parseInt(dados.get(0));
+            tempoSelection = Long.parseLong(dados.get(0));
             dataset.addValue(tempoSelection, "SELECTION", "MÉTODO");
         }
         if(!dados.get(1).equals("X")){
-            tempoInsertion = Integer.parseInt(dados.get(1));
+            tempoInsertion = Long.parseLong(dados.get(1));
             dataset.addValue(tempoInsertion, "INSERTION", "MÉTODO");
         }
         if(!dados.get(2).equals("X")){
-            tempoBubble = Integer.parseInt(dados.get(2));
+            tempoBubble = Long.parseLong(dados.get(2));
             dataset.addValue(tempoBubble, "BUBBLE", "MÉTODO");
         }
         if(!dados.get(3).equals("X")){
-            tempoShake = Integer.parseInt(dados.get(3));
+            tempoShake = Long.parseLong(dados.get(3));
             dataset.addValue(tempoShake, "SHAKE", "MÉTODO");
         }
         if(!dados.get(4).equals("X")){
-            tempoComb = Integer.parseInt(dados.get(4));
+            tempoComb = Long.parseLong(dados.get(4));
             dataset.addValue(tempoComb, "COMB", "MÉTODO");
         }
         if(!dados.get(5).equals("X")){
-            tempoShell = Integer.parseInt(dados.get(5));
+            tempoShell = Long.parseLong(dados.get(5));
             dataset.addValue(tempoShell, "SHELL", "MÉTODO");
         }
         //Criando o gráfico
