@@ -2,16 +2,12 @@
 import java.util.ArrayList;
 
 /**
- * Métodos para ordenação
- * @author Cássio Gamarra & Frederico Hartmann
+ * Classe com os métodos de ordenação
+ * @author cassio
  */
 public class Ordenacao {
     public Ordenacao(){}
-    public static void exibir(ArrayList<Pessoa> vetor){   
-        for(int i = 0; i < vetor.size(); i++){
-            System.out.println(vetor.get(i).getNome()+" "+vetor.get(i).getIdade());
-        }
-    }
+
     //Método para clonar o ArrayList
     public static void clonar(ArrayList vetorOrigem, ArrayList vetorDestino){
         for(int i = 0; i < vetorOrigem.size();i++){
@@ -20,7 +16,8 @@ public class Ordenacao {
     }
     
     //Métodos de ordenação
-    public static void bolha(ArrayList<Pessoa> vetor){
+    public static String bolha(ArrayList<Pessoa> vetor){
+        String msg = "";
         int i;
         long numTrocas = 0, numComparacoes = 0;
         boolean troca;
@@ -46,38 +43,44 @@ public class Ordenacao {
                  }
              }
          } while(troca);
-         System.out.println("Número de comparações: "+numComparacoes+" Número de trocas: "+numTrocas);
-    }
-    
-    public static void selecao(ArrayList<Pessoa> vetor){
-         int i, j, posMenor;
-         Pessoa aux = new Pessoa("",0);
-         long numTrocas = 0, numComparacoes = 0;
          
-         for(i = 0; i < vetor.size() - 1; i++){
-             posMenor = i;
-             
-             for(j = i+1; j < vetor.size(); j++){
-                 numComparacoes++;
-                 if(vetor.get(j).getNome().compareTo(vetor.get(posMenor).getNome()) < 0){
-                     posMenor = j;
-                 }
-                 else if(vetor.get(j).getNome().compareTo(vetor.get(posMenor).getNome()) == 0
-                         && vetor.get(j).getIdade() < vetor.get(posMenor).getIdade()){
-                     posMenor = j;
-                 }
-             }
-             if(i != posMenor){
-                 aux = vetor.get(i);
-                 vetor.set(i, vetor.get(posMenor));
-                 vetor.set(posMenor, aux);
-                 numTrocas++;
-             }
-         }
-         System.out.println("Número de comparações: "+numComparacoes+" Número de trocas: "+numTrocas);
+         msg = "Número de comparações: "+numComparacoes+" Número de trocas: "+numTrocas;
+         return msg;
     }
     
-    public static void pente(ArrayList<Pessoa> vetor){
+    public static String selecao(ArrayList<Pessoa> vetor){
+        String msg = "";
+        int i, j, posMenor;
+        Pessoa aux = new Pessoa("",0);
+        long numTrocas = 0, numComparacoes = 0;
+         
+        for(i = 0; i < vetor.size() - 1; i++){
+            posMenor = i;
+            
+            for(j = i+1; j < vetor.size(); j++){
+                numComparacoes++;
+                if(vetor.get(j).getNome().compareTo(vetor.get(posMenor).getNome()) < 0){
+                    posMenor = j;
+                }
+                else if(vetor.get(j).getNome().compareTo(vetor.get(posMenor).getNome()) == 0
+                        && vetor.get(j).getIdade() < vetor.get(posMenor).getIdade()){
+                    posMenor = j;
+                }
+            }
+            if(i != posMenor){
+                aux = vetor.get(i);
+                vetor.set(i, vetor.get(posMenor));
+                vetor.set(posMenor, aux);
+                numTrocas++;
+            }
+        }
+        
+        msg = "Número de comparações: "+numComparacoes+" Número de trocas: "+numTrocas;
+        return msg;
+    }
+    
+    public static String pente(ArrayList<Pessoa> vetor){
+        String msg = "";
         int i, distancia;
         Pessoa aux = new Pessoa("", 0);
         long numTrocas = 0, numComparacoes = 0;
@@ -109,7 +112,7 @@ public class Ordenacao {
             }
         }while(distancia > 1 || houveTroca);
         
-        System.out.println("Número de comparações: "+numComparacoes+" Número de trocas: "+numTrocas);
+        msg = "Número de comparações: "+numComparacoes+" Número de trocas: "+numTrocas;
+        return msg;
     }
-    
 }
