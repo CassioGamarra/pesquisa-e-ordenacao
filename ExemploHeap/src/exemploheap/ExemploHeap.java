@@ -5,17 +5,31 @@
  */
 package exemploheap;
 
+import static exemploheap.Metodos.*;
+import java.util.ArrayList;
+
 /**
  *
  * @author cassio
  */
 public class ExemploHeap {
-
+    public static ArrayList<Integer> heap = new ArrayList<>();
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Teste");
+        popular(100, heap);
+        exibir(heap);
+        if(estaEmHeap(heap)){
+            System.out.println("SIM");
+        }
+        else{
+            System.out.println("NAO");
+        }
+        colocarEmHeap(heap);
+        exibir(heap);
+        
     }
     
 }
