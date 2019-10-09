@@ -174,6 +174,8 @@ public class Ordenacao {
     }
     
     //Métodos de ordenação
+    
+    //Seleção
     public static void selecao(ArrayList<Integer> vetor){
          int i, j, posMenor, aux;
          long numTrocas = 0, numComparacoes = 0;
@@ -199,6 +201,7 @@ public class Ordenacao {
          comparacoes.add(String.valueOf(numComparacoes));
     }
     
+    //Inserção
     public static void insercao(ArrayList<Integer> vetor){
         int i, j, aux;
         long numTrocas = 0, numComparacoes = 0;
@@ -221,6 +224,7 @@ public class Ordenacao {
         comparacoes.add(String.valueOf(numComparacoes));
     }
     
+    //Bolha
     public static void bolha(ArrayList<Integer> vetor){
         int i, aux;
         long numTrocas = 0, numComparacoes = 0;
@@ -243,6 +247,7 @@ public class Ordenacao {
         comparacoes.add(String.valueOf(numComparacoes));
     }
     
+    //Agitação
     public static void agitacao(ArrayList<Integer> vetor){
         int i, aux, ini, fim;
         long numTrocas = 0, numComparacoes = 0;
@@ -284,6 +289,7 @@ public class Ordenacao {
         comparacoes.add(String.valueOf(numComparacoes));
     }
     
+    //Pente
     public static void pente(ArrayList<Integer> vetor){
         int i, distancia, aux;
         long numTrocas = 0, numComparacoes = 0;
@@ -312,6 +318,7 @@ public class Ordenacao {
         comparacoes.add(String.valueOf(numComparacoes));
     }
     
+    //Shell
     public static void shellSort(ArrayList<Integer> vetor){
         int i, j, aux, distancia = 1;
         long numTrocas = 0, numComparacoes = 0;
@@ -336,8 +343,63 @@ public class Ordenacao {
         trocas.add(String.valueOf(numTrocas));
         comparacoes.add(String.valueOf(numComparacoes));
     }
+    
     //Necessário implementar
     public static void mergeSort(ArrayList<Integer> vetor){
     
+    }
+    
+    //Métodos auxiliares
+    
+    //Método auxiliar do Merge Sort
+    public static void intercala(ArrayList<Integer> vetor){
+        int meio;
+        int i, j, k;
+        long numTrocas = 0, numComparacoes = 0;
+        
+        ArrayList<Integer> vetorTmp = new ArrayList<>();
+        
+        meio = vetor.size() / 2;
+        
+        i = 0; //Indice porção esquerda
+        j =  meio; //Indice da porção da direita
+        k = 0; //Indice do vetor temporario
+        
+        while(i < meio  && j < vetor.size()){
+            numComparacoes++;
+            //Elemento da porção esquerda
+            if(vetor.get(i) < vetor.get(j)){
+                vetorTmp.set(j, vetor.get(i));
+            }
+            //Elemento da porção direita
+            else{
+                vetorTmp.set(k, vetor.get(j));
+            }
+            k++;
+            numTrocas++;
+        }
+        
+        if(i == meio){
+            while(j < vetor.size()){
+                vetorTmp.set(k, vetor.get(j));
+                j++;
+                k++;
+                numTrocas++;
+            }
+        }
+        else{
+            while(i < meio){
+                vetorTmp.set(k, vetor.get(i));
+                i++;
+                k++;
+                numTrocas++;
+            }
+        }
+        
+        for(i = 0; i < vetor.size(); i++){
+            vetor.set(i, vetorTmp.get(i));
+        }
+        
+        vetorTmp.clear();
     }
 }
