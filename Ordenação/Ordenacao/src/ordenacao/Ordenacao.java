@@ -167,7 +167,6 @@ public class Ordenacao {
     }
     
     public static void exibir(ArrayList vetor){
-        
         for(int i = 0; i < vetor.size(); i++){
             System.out.println(vetor.get(i));
         }
