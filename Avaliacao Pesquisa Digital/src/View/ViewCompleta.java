@@ -7,6 +7,8 @@ package View;
 
 import Controller.BuscaCompleta;
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -25,7 +27,38 @@ public class ViewCompleta extends javax.swing.JFrame {
      */
     public ViewCompleta() {
         initComponents();
+        Thread verificaCampo = new Thread(new ViewCompleta.VerificaCampo(), "Verifica Campo");
+        verificaCampo.setDaemon(true);
+        verificaCampo.start();
     }
+    
+    /**
+     * Runnable que contém o código que atuará na thread. Chamando o método setHora
+     */
+    private class VerificaCampo implements Runnable {
+        public void run() {
+            try {
+                while (true) {
+                    // Aqui chamamos o setHora através da EventQueue da AWT.
+                    // Conforme dito, isso garante Thread safety para o Swing.
+                    EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            if(fieldBusca.getText().length() == 0){
+                                fieldTexto.setForeground(Color.BLACK);
+                                fieldResultado.setText("");
+                            }
+                        }
+                    });
+                    // Fazemos nossa thread dormir por um segundo, liberando o
+                    // processador para outras threads processarem.
+                    Thread.sleep(1000);
+                }
+            }
+            catch (InterruptedException e) {
+            }
+        }
+    }
+    
     //Instancia a busca
     BuscaCompleta busca = new BuscaCompleta();
     //Criar o objeto documento
