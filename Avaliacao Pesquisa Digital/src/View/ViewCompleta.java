@@ -6,6 +6,9 @@
 package View;
 
 import Controller.BuscaCompleta;
+import java.awt.Color;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.DefaultStyledDocument;
@@ -27,18 +30,23 @@ public class ViewCompleta extends javax.swing.JFrame {
     BuscaCompleta busca = new BuscaCompleta();
     //Criar o objeto documento
     public StyledDocument documento = new DefaultStyledDocument();
+
     //Getter
     
-    public JTextPane getFieldResultado() {
-        return fieldResultado;
+    public JTextPane getFieldTexto() {
+        return fieldTexto;
     }
     
     public JTextField getFieldBusca() {
         return fieldBusca;
     }
-    
-    public JTextPane getFieldTextoEntrada() {
-        return fieldTextoEntrada;
+
+    public JTextArea getFieldResultado() {
+        return fieldResultado;
+    }
+
+    public JPanel getPanelBusca() {
+        return panelBusca;
     }
     
     /**
@@ -53,10 +61,11 @@ public class ViewCompleta extends javax.swing.JFrame {
 
         panelViewPrincipal = new javax.swing.JPanel();
         fieldBusca = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        fieldTextoEntrada = new javax.swing.JTextPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        fieldResultado = new javax.swing.JTextPane(documento);
+        fieldTexto = new javax.swing.JTextPane(documento);
+        panelBusca = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        fieldResultado = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,13 +77,28 @@ public class ViewCompleta extends javax.swing.JFrame {
             }
         });
 
-        fieldTextoEntrada.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TEXTO:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-        fieldTextoEntrada.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jScrollPane2.setViewportView(fieldTextoEntrada);
+        fieldTexto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TEXTO:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        fieldTexto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jScrollPane1.setViewportView(fieldTexto);
 
-        fieldResultado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RESULTADO:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        panelBusca.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RESULTADO DA BUSCA:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+
+        fieldResultado.setColumns(20);
         fieldResultado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jScrollPane1.setViewportView(fieldResultado);
+        fieldResultado.setRows(5);
+        fieldResultado.setBorder(null);
+        jScrollPane2.setViewportView(fieldResultado);
+
+        javax.swing.GroupLayout panelBuscaLayout = new javax.swing.GroupLayout(panelBusca);
+        panelBusca.setLayout(panelBuscaLayout);
+        panelBuscaLayout.setHorizontalGroup(
+            panelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2)
+        );
+        panelBuscaLayout.setVerticalGroup(
+            panelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         javax.swing.GroupLayout panelViewPrincipalLayout = new javax.swing.GroupLayout(panelViewPrincipal);
         panelViewPrincipal.setLayout(panelViewPrincipalLayout);
@@ -83,21 +107,21 @@ public class ViewCompleta extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelViewPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane2)
-                    .addComponent(fieldBusca, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
+                    .addComponent(panelBusca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(fieldBusca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelViewPrincipalLayout.setVerticalGroup(
             panelViewPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelViewPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fieldBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(panelBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(118, 118, 118))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -108,7 +132,9 @@ public class ViewCompleta extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelViewPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelViewPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,10 +187,11 @@ public class ViewCompleta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField fieldBusca;
-    private javax.swing.JTextPane fieldResultado;
-    private javax.swing.JTextPane fieldTextoEntrada;
+    private javax.swing.JTextArea fieldResultado;
+    private javax.swing.JTextPane fieldTexto;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel panelBusca;
     private javax.swing.JPanel panelViewPrincipal;
     // End of variables declaration//GEN-END:variables
 }
