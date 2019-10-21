@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import View.ViewMinima;
+import View.ViewCompleta;
 
 /**
  *
@@ -13,7 +13,8 @@ import View.ViewMinima;
  */
 public class Inicializa {
     public static void main(String[] args) {
-        ViewMinima view = new ViewMinima();
+        ViewCompleta view = new ViewCompleta();
+        view.setExtendedState(view.MAXIMIZED_BOTH);
         view.setLocationRelativeTo(null);
         view.setVisible(true);
     }
