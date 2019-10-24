@@ -10,15 +10,15 @@ import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
 /**
- * Classe com métodos para busca em 
- * @author cassio
+ * Classe com métodos para busca em um texto
+ * @authors Cássio Gamarra & Frederico Hartmann
  */
 public class BuscaCompleta {
     public BuscaCompleta(){}
    
     public void buscar(ViewCompleta view){
         
-        //Recebe as variaveis
+        //Recebe as variaveis da view
         String texto = view.getFieldTexto().getText();
         String palavra = view.getFieldBusca().getText();
         String resultadoBusca =  " ";
@@ -27,11 +27,11 @@ public class BuscaCompleta {
         int i = 0;
         int index;
         
-        //Adiciona os valores para o resultado
+        //Redefine o campo de texto
         view.getFieldTexto().setText(texto);
-        //Aqui busca as ocorrências da palavra
+        //Array para armazenar as posições da busca no texto
         ArrayList<Integer> posicoes = new ArrayList<>();
-        //Remove o case sensitive
+        //Remove o case sensitive, transformando todas em maiúsculas
         texto = texto.toUpperCase();
         palavra =  palavra.toUpperCase();
         do{
@@ -57,11 +57,12 @@ public class BuscaCompleta {
         view.getFieldResultado().setText(posicoesBusca);
     }
     
+    //Método para destacar as letras e palavras no texto
     private static void destacarTexto(int ini, int tam, StyledDocument documento, Color cor) {  
         try {
             StyleContext contexto = StyleContext.getDefaultStyleContext();  
             AttributeSet estilo = contexto.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, cor);  
-            /*Pinta o texto com os parâmetros:
+            /*Pinta o texto a partir dos seguintes parâmetros:
             * posição do texto, tamanho do texto e o estilo criado 
             */
             documento.setCharacterAttributes(ini, tam, estilo, true);

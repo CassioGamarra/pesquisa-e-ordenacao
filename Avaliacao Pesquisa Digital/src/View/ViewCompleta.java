@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import Controller.BuscaCompleta;
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -17,8 +11,8 @@ import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.StyledDocument;
 
 /**
- *
- * @author cassio
+ * Sistema de Busca - Desenvolvido na disciplina de Pesquisa e Ordenação
+ * @authors Cássio Gamarra & Frederico Hartmann
  */
 public class ViewCompleta extends javax.swing.JFrame {
 
@@ -33,14 +27,13 @@ public class ViewCompleta extends javax.swing.JFrame {
     }
     
     /**
-     * Runnable que contém o código que atuará na thread. Chamando o método setHora
+     * Runnable que contém o código que atuará na thread.
      */
     private class VerificaCampo implements Runnable {
         public void run() {
             try {
                 while (true) {
-                    // Aqui chamamos o setHora através da EventQueue da AWT.
-                    // Conforme dito, isso garante Thread safety para o Swing.
+                    //Busca o campo de busca e verifica se o mesmo está em uso
                     EventQueue.invokeLater(new Runnable() {
                         public void run() {
                             if(fieldBusca.getText().length() == 0){
@@ -49,8 +42,7 @@ public class ViewCompleta extends javax.swing.JFrame {
                             }
                         }
                     });
-                    // Fazemos nossa thread dormir por um segundo, liberando o
-                    // processador para outras threads processarem.
+                    // Fazemos nossa thread dormir por um segundo
                     Thread.sleep(1000);
                 }
             }
@@ -59,13 +51,13 @@ public class ViewCompleta extends javax.swing.JFrame {
         }
     }
     
-    //Instancia a busca
+    //Instancia a clase busca
     BuscaCompleta busca = new BuscaCompleta();
-    //Criar o objeto documento
+    //Criar um objeto do tipo StyledDocumento
+    //O mesmo facilita a edição de estilos em palavras
     public StyledDocument documento = new DefaultStyledDocument();
 
-    //Getter
-    
+    //Getter do frame, permitindo o acesso em outra classe
     public JTextPane getFieldTexto() {
         return fieldTexto;
     }
@@ -102,7 +94,11 @@ public class ViewCompleta extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        panelViewPrincipal.setBorder(javax.swing.BorderFactory.createTitledBorder("TRABALHO AVIALIATIVO - CÁSSIO E FREDERICO"));
+        panelViewPrincipal.setName("TESTE"); // NOI18N
+
         fieldBusca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        fieldBusca.setToolTipText("Insira o caractere ou palavra para buscar");
         fieldBusca.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PALAVRA PARA BUSCA:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         fieldBusca.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -112,10 +108,12 @@ public class ViewCompleta extends javax.swing.JFrame {
 
         fieldTexto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TEXTO:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         fieldTexto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        fieldTexto.setToolTipText("Insira o texto para busca");
         jScrollPane1.setViewportView(fieldTexto);
 
         panelBusca.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RESULTADO DA BUSCA:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
+        fieldResultado.setEditable(false);
         fieldResultado.setColumns(20);
         fieldResultado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         fieldResultado.setRows(5);
@@ -174,7 +172,7 @@ public class ViewCompleta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fieldBuscaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldBuscaKeyReleased
-        // TODO add your handling code here:
+        // Busca o que está sendo digitado no campo
         if (fieldBusca.getText().length()>0){
             busca.buscar(this);
         }
