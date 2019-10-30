@@ -39,7 +39,7 @@ public class BuscaCompleta {
             if(index >= 0){
                 posicoes.add(index);
             }
-            i = texto.indexOf(palavra, i) + tamPalavra;
+            i = index + tamPalavra;
         }while(index >= 0);
         
         //Resultados da busca: 

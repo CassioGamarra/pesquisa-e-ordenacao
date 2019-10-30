@@ -51,7 +51,7 @@ public class ViewCompleta extends javax.swing.JFrame {
         }
     }
     
-    //Instancia a clase busca
+    //Instancia a classe busca
     BuscaCompleta busca = new BuscaCompleta();
     //Criar um objeto do tipo StyledDocumento
     //O mesmo facilita a edição de estilos em palavras
